@@ -12,19 +12,19 @@ define('MYSQL_DB_NAME', 'projetorede');
 
 class ConexaoDB {
 
-    protected $conectar;
+    protected static $conectar;
 
-    public function conectar()
+    public static function conectar()
     {
         try {
-            $this->conectar = new PDO('mysql:host=' . MYSQL_HOST . ';dbname=' . MYSQL_DB_NAME, MYSQL_USER, MYSQL_PASSWORD);
-            $this->conectar->exec("SET CHARACTER SET utf8"); 
+            $conectar = new PDO('mysql:host=' . MYSQL_HOST . ';dbname=' . MYSQL_DB_NAME, MYSQL_USER, MYSQL_PASSWORD);
+            $conectar->exec("SET CHARACTER SET utf8"); 
             
         } catch (PDOException $e) {
             echo 'Erro ao conectar com o MySQL: ' . $e->getMessage();
             die;
         }
-        return $this->conectar;
+        return $conectar;
     }
 }
 

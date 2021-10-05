@@ -2,15 +2,19 @@
 require_once '../../Autoload.php';
 
 use Sistema\Service\ServiceChamado;
-use Sistema\Model\DAO\BaseDAO;
+use Sistema\Controller\Controller;
+use Sistema\View\CadastroChamado;
+use Sistema\Service\ServiceTelas;
 
 if (isset($_POST['btnEnviar'])){
 
-    // $service = new ServiceChamado();
-    // $service->cadastrarChamado($_POST['titulo'], $_POST['descricao']);
+    $service = new ServiceChamado();
+    $chamado = $service->cadastrarChamado($_POST['titulo'], $_POST['descricao']);
+    echo $chamado;
 
-    $baseDao = new BaseDAO;
-    $resultado = $baseDao->select('select * from postagem;');
+    // $tela = new Controller();
+    // $tela->caminhoAtual('CadastroChamado');
+    new ServiceTelas($teste);
+    new CadastroChamado();
 
-    print_r($resultado);
 }

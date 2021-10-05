@@ -1,10 +1,34 @@
 <?php
 
-namespace Model;
+namespace Sistema\Model\DAO;
 
-class ChamadoDao 
+use Sistema\Model\Entidades\Chamado;
+use Sistema\Model\DAO\BaseDAO;
+
+
+class ChamadoDAO extends BaseDAO
 {
-    protected function cadastrarChamado (string $titulo, string $descricao) {
-        //
+    public function consultarChamado ($sql)
+    {
+        $resultado = parent::select($sql);
+
+        foreach ($resultado as $row) {
+            print $row['titulo'] . "<br>";
+        }
+    }
+
+    public function cadastrarChamado ($titulo, $descricao) 
+    {
+        $novoChamado = parent::insert(
+            'chamado',
+            ':titulo, 
+            :descricao', 
+            [
+            ':titulo'       => $titulo, 
+            ':descricao'    => $descricao
+            ]
+        );
+        
+        return $novoChamado;
     }
 }

@@ -9,12 +9,3 @@ spl_autoload_register(function(string $namespaceClasse){
         require_once $caminhoArquivo;
     }
 );
-
-// $posicao = strpos(getcwd(), 'src');
-// $contagemNiveisPastas = substr(getcwd(), $posicao);
-// $transformaEmArray = explode("\\", $contagemNiveisPastas);
-// $diretorio = "";
-// foreach ($transformaEmArray as $item) {
-//      $diretorio .= "../";
-// }
-// $diretorio .= $caminhoArquivo;
